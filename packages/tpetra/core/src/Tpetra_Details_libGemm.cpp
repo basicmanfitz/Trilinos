@@ -108,19 +108,19 @@ namespace Lib {
 namespace Impl {
 
 void
-cgemm (const char transA,
-       const char transB,
-       const int m,
-       const int n,
-       const int k,
-       const ::Kokkos::complex<float>& alpha,
-       const ::Kokkos::complex<float> A[],
-       const int lda,
-       const ::Kokkos::complex<float> B[],
-       const int ldb,
-       const ::Kokkos::complex<float>& beta,
-       ::Kokkos::complex<float> C[],
-       const int ldc)
+cgemm_fwrap (const char transA,
+             const char transB,
+             const int m,
+             const int n,
+             const int k,
+             const ::Kokkos::complex<float>& alpha,
+             const ::Kokkos::complex<float> A[],
+             const int lda,
+             const ::Kokkos::complex<float> B[],
+             const int ldb,
+             const ::Kokkos::complex<float>& beta,
+             ::Kokkos::complex<float> C[],
+             const int ldc)
 {
 #ifdef HAVE_TPETRA_INST_COMPLEX_FLOAT
   TPETRACORE_CGEMM (&transA, &transB, &m, &n, &k, &alpha, A, &lda, B, &ldb, &beta, C, &ldc);
@@ -131,55 +131,55 @@ cgemm (const char transA,
 }
 
 void
-dgemm (const char transA,
-       const char transB,
-       const int m,
-       const int n,
-       const int k,
-       const double alpha,
-       const double A[],
-       const int lda,
-       const double B[],
-       const int ldb,
-       const double beta,
-       double C[],
-       const int ldc)
+dgemm_fwrap (const char transA,
+             const char transB,
+             const int m,
+             const int n,
+             const int k,
+             const double alpha,
+             const double A[],
+             const int lda,
+             const double B[],
+             const int ldb,
+             const double beta,
+             double C[],
+             const int ldc)
 {
   TPETRACORE_DGEMM (&transA, &transB, &m, &n, &k, &alpha, A, &lda, B, &ldb, &beta, C, &ldc);
 }
 
 void
-sgemm (const char transA,
-       const char transB,
-       const int m,
-       const int n,
-       const int k,
-       const float alpha,
-       const float A[],
-       const int lda,
-       const float B[],
-       const int ldb,
-       const float beta,
-       float C[],
-       const int ldc)
+sgemm_fwrap (const char transA,
+             const char transB,
+             const int m,
+             const int n,
+             const int k,
+             const float alpha,
+             const float A[],
+             const int lda,
+             const float B[],
+             const int ldb,
+             const float beta,
+             float C[],
+             const int ldc)
 {
   TPETRACORE_SGEMM (&transA, &transB, &m, &n, &k, &alpha, A, &lda, B, &ldb, &beta, C, &ldc);
 }
 
 void
-zgemm (const char transA,
-       const char transB,
-       const int m,
-       const int n,
-       const int k,
-       const ::Kokkos::complex<double>& alpha,
-       const ::Kokkos::complex<double> A[],
-       const int lda,
-       const ::Kokkos::complex<double> B[],
-       const int ldb,
-       const ::Kokkos::complex<double>& beta,
-       ::Kokkos::complex<double> C[],
-       const int ldc)
+zgemm_fwrap (const char transA,
+             const char transB,
+             const int m,
+             const int n,
+             const int k,
+             const ::Kokkos::complex<double>& alpha,
+             const ::Kokkos::complex<double> A[],
+             const int lda,
+             const ::Kokkos::complex<double> B[],
+             const int ldb,
+             const ::Kokkos::complex<double>& beta,
+             ::Kokkos::complex<double> C[],
+             const int ldc)
 {
 #ifdef HAVE_TPETRA_INST_COMPLEX_DOUBLE
   TPETRACORE_ZGEMM (&transA, &transB, &m, &n, &k, &alpha, A, &lda, B, &ldb, &beta, C, &ldc);
