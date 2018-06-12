@@ -86,10 +86,8 @@ namespace Intrepid2 {
           switch(opType) {
           case OPERATOR_VALUE:
             return 3*getPnCardinality<1>(order)+getPnCardinality<1>(order-1);
-            break;
           case OPERATOR_CURL:
             return 5*getPnCardinality<1>(order)+getPnCardinality<1>(order-1);
-            break;
           default: {
             INTREPID2_TEST_FOR_ABORT( true,
               ">>> ERROR: (Intrepid2::Basis_HCURL_HEX_In_FEM::Serial::getWorkSizePerPoint) operator is not supported" );
@@ -267,7 +265,7 @@ namespace Intrepid2 {
 
   private:
 
-    /** \brief inverse of Generalized Vandermonde matrix (isotropic order */
+    /** \brief inverse of Generalized Vandermonde matrix (isotropic order) */
     Kokkos::DynRankView<typename scalarViewType::value_type,ExecSpaceType> vinvLine_, vinvBubble_;
   };
 
