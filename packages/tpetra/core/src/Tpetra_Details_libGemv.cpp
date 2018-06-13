@@ -132,17 +132,17 @@ namespace Lib {
 namespace Impl {
 
 void
-cgemv (const char trans,
-       const int m,
-       const int n,
-       const ::Kokkos::complex<float>& alpha,
-       const ::Kokkos::complex<float> A[],
-       const int lda,
-       const ::Kokkos::complex<float> x[],
-       const int incx,
-       const ::Kokkos::complex<float>& beta,
-       ::Kokkos::complex<float> y[],
-       const int incy)
+cgemv_fwrap (const char trans,
+             const int m,
+             const int n,
+             const ::Kokkos::complex<float>& alpha,
+             const ::Kokkos::complex<float> A[],
+             const int lda,
+             const ::Kokkos::complex<float> x[],
+             const int incx,
+             const ::Kokkos::complex<float>& beta,
+             ::Kokkos::complex<float> y[],
+             const int incy)
 {
 #ifdef HAVE_TPETRA_INST_COMPLEX_FLOAT
   TPETRACORE_CGEMV (&trans, &m, &n, &alpha, A, &lda, x, &incx, &beta, y, &incy);
@@ -153,49 +153,49 @@ cgemv (const char trans,
 }
 
 void
-dgemv (const char trans,
-       const int m,
-       const int n,
-       const double alpha,
-       const double A[],
-       const int lda,
-       const double x[],
-       const int incx,
-       const double beta,
-       double y[],
-       const int incy)
+dgemv_fwrap (const char trans,
+             const int m,
+             const int n,
+             const double alpha,
+             const double A[],
+             const int lda,
+             const double x[],
+             const int incx,
+             const double beta,
+             double y[],
+             const int incy)
 {
   TPETRACORE_DGEMV (&trans, &m, &n, &alpha, A, &lda, x, &incx, &beta, y, &incy);
 }
 
 void
-sgemv (const char trans,
-       const int m,
-       const int n,
-       const float alpha,
-       const float A[],
-       const int lda,
-       const float x[],
-       const int incx,
-       const float beta,
-       float y[],
-       const int incy)
+sgemv_fwrap (const char trans,
+             const int m,
+             const int n,
+             const float alpha,
+             const float A[],
+             const int lda,
+             const float x[],
+             const int incx,
+             const float beta,
+             float y[],
+             const int incy)
 {
   TPETRACORE_SGEMV (&trans, &m, &n, &alpha, A, &lda, x, &incx, &beta, y, &incy);
 }
 
 void
-zgemv (const char trans,
-       const int m,
-       const int n,
-       const ::Kokkos::complex<double>& alpha,
-       const ::Kokkos::complex<double> A[],
-       const int lda,
-       const ::Kokkos::complex<double> x[],
-       const int incx,
-       const ::Kokkos::complex<double>& beta,
-       ::Kokkos::complex<double> y[],
-       const int incy)
+zgemv_fwrap (const char trans,
+             const int m,
+             const int n,
+             const ::Kokkos::complex<double>& alpha,
+             const ::Kokkos::complex<double> A[],
+             const int lda,
+             const ::Kokkos::complex<double> x[],
+             const int incx,
+             const ::Kokkos::complex<double>& beta,
+             ::Kokkos::complex<double> y[],
+             const int incy)
 {
 #ifdef HAVE_TPETRA_INST_COMPLEX_DOUBLE
   TPETRACORE_ZGEMV (&trans, &m, &n, &alpha, A, &lda, x, &incx, &beta, y, &incy);

@@ -103,59 +103,59 @@ namespace Impl {
 
 /// \brief Wrapped version of the BLAS library's cgemv.
 void
-cgemv (const char char_trans,
-       const int m,
-       const int n,
-       const ::Kokkos::complex<float>& alpha,
-       const ::Kokkos::complex<float> A[],
-       const int lda,
-       const ::Kokkos::complex<float> x[],
-       const int incx,
-       const ::Kokkos::complex<float>& beta,
-       ::Kokkos::complex<float> y[],
-       const int incy);
+cgemv_fwrap (const char char_trans,
+             const int m,
+             const int n,
+             const ::Kokkos::complex<float>& alpha,
+             const ::Kokkos::complex<float> A[],
+             const int lda,
+             const ::Kokkos::complex<float> x[],
+             const int incx,
+             const ::Kokkos::complex<float>& beta,
+             ::Kokkos::complex<float> y[],
+             const int incy);
 
 /// \brief Wrapped version of the BLAS library's dgemv.
 void
-dgemv (const char char_trans,
-       const int m,
-       const int n,
-       const double alpha,
-       const double A[],
-       const int lda,
-       const double x[],
-       const int incx,
-       const double beta,
-       double y[],
-       const int incy);
+dgemv_fwrap (const char char_trans,
+             const int m,
+             const int n,
+             const double alpha,
+             const double A[],
+             const int lda,
+             const double x[],
+             const int incx,
+             const double beta,
+             double y[],
+             const int incy);
 
 /// \brief Wrapped version of the BLAS library's sgemv.
 void
-sgemv (const char char_trans,
-       const int m,
-       const int n,
-       const float alpha,
-       const float A[],
-       const int lda,
-       const float x[],
-       const int incx,
-       const float beta,
-       float y[],
-       const int incy);
+sgemv_fwrap (const char char_trans,
+             const int m,
+             const int n,
+             const float alpha,
+             const float A[],
+             const int lda,
+             const float x[],
+             const int incx,
+             const float beta,
+             float y[],
+             const int incy);
 
 /// \brief Wrapped version of the BLAS library's zgemv.
 void
-zgemv (const char char_trans,
-       const int m,
-       const int n,
-       const ::Kokkos::complex<double>& alpha,
-       const ::Kokkos::complex<double> A[],
-       const int lda,
-       const ::Kokkos::complex<double> x[],
-       const int incx,
-       const ::Kokkos::complex<double>& beta,
-       ::Kokkos::complex<double> y[],
-       const int incy);
+zgemv_fwrap (const char char_trans,
+             const int m,
+             const int n,
+             const ::Kokkos::complex<double>& alpha,
+             const ::Kokkos::complex<double> A[],
+             const int lda,
+             const ::Kokkos::complex<double> x[],
+             const int incx,
+             const ::Kokkos::complex<double>& beta,
+             ::Kokkos::complex<double> y[],
+             const int incy);
 
 /// \brief Wrapper for the above wrappers, templated on scalar type
 ///   (the type of each entry in the matrices).
@@ -178,7 +178,7 @@ struct Gemv< ::Kokkos::complex<float> > {
         scalar_type y[],
         const int incy)
   {
-    return cgemv (trans, m, n, alpha, A, lda, x, incx, beta, y, incy);
+    return cgemv_fwrap (trans, m, n, alpha, A, lda, x, incx, beta, y, incy);
   }
 };
 
@@ -199,7 +199,7 @@ struct Gemv<double> {
         scalar_type y[],
         const int incy)
   {
-    return dgemv (trans, m, n, alpha, A, lda, x, incx, beta, y, incy);
+    return dgemv_fwrap (trans, m, n, alpha, A, lda, x, incx, beta, y, incy);
   }
 };
 
@@ -220,7 +220,7 @@ struct Gemv<float> {
         scalar_type y[],
         const int incy)
   {
-    return sgemv (trans, m, n, alpha, A, lda, x, incx, beta, y, incy);
+    return sgemv_fwrap (trans, m, n, alpha, A, lda, x, incx, beta, y, incy);
   }
 };
 
@@ -241,7 +241,7 @@ struct Gemv< ::Kokkos::complex<double> > {
         scalar_type y[],
         const int incy)
   {
-    return zgemv (trans, m, n, alpha, A, lda, x, incx, beta, y, incy);
+    return zgemv_fwrap (trans, m, n, alpha, A, lda, x, incx, beta, y, incy);
   }
 };
 
